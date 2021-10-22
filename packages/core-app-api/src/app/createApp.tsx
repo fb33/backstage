@@ -15,7 +15,10 @@
  */
 
 import { AppConfig, JsonObject } from '@backstage/config';
-import { defaultAppComponents } from '@backstage/core-components';
+import {
+  defaultAppComponents,
+  defaultAppIcons,
+} from '@backstage/core-components';
 import { darkTheme, lightTheme } from '@backstage/theme';
 import DarkIcon from '@material-ui/icons/Brightness2';
 import LightIcon from '@material-ui/icons/WbSunny';
@@ -24,7 +27,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { PrivateAppImpl } from './App';
 import { AppThemeProvider } from './AppThemeProvider';
 import { defaultApis } from './defaultApis';
-import { defaultAppIcons } from './icons';
 import { AppConfigLoader, AppOptions } from './types';
 import { AppComponents, BackstagePlugin } from '@backstage/core-plugin-api';
 
@@ -107,8 +109,22 @@ export function createApp(options?: AppOptions) {
     );
   }
 
+  const appIcons = defaultAppIcons();
+  const providedIconKeys = Object.keys(options?.icons ?? {});
+  const missingIconKeys = Object.keys(appIcons).filter(
+    key => !providedIconKeys.includes(key),
+  );
+  if (missingIconKeys.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'DEPRECATION WARNING: The createApp options will soon require all app icons to be provided.' +
+        'These icons can be created using defaultAppIcons from @backstage/core-components ' +
+        'and then passed along like this: createApp({ icons: ...defaultAppIcons() })' +
+        `The following icons are missing: ${missingIconKeys.join(', ')}`,
+    );
+  }
+
   const apis = options?.apis ?? [];
-  const icons = { ...defaultAppIcons, ...options?.icons };
   const plugins = options?.plugins ?? [];
   const components = {
     ...defaultAppComponents(),
@@ -136,7 +152,7 @@ export function createApp(options?: AppOptions) {
 
   return new PrivateAppImpl({
     apis,
-    icons,
+    icons: { ...appIcons, ...options?.icons },
     plugins: plugins as BackstagePlugin<any, any>[],
     components,
     themes,

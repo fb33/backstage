@@ -32,46 +32,24 @@ import MuiPeopleIcon from '@material-ui/icons/People';
 import MuiPersonIcon from '@material-ui/icons/Person';
 import MuiWarningIcon from '@material-ui/icons/Warning';
 
-export type AppIcons = {
-  'kind:api': IconComponent;
-  'kind:component': IconComponent;
-  'kind:domain': IconComponent;
-  'kind:group': IconComponent;
-  'kind:location': IconComponent;
-  'kind:system': IconComponent;
-  'kind:user': IconComponent;
-
-  brokenImage: IconComponent;
-  catalog: IconComponent;
-  chat: IconComponent;
-  dashboard: IconComponent;
-  docs: IconComponent;
-  email: IconComponent;
-  github: IconComponent;
-  group: IconComponent;
-  help: IconComponent;
-  user: IconComponent;
-  warning: IconComponent;
-};
-
-export const defaultAppIcons: AppIcons = {
-  brokenImage: MuiBrokenImageIcon,
+export const defaultAppIcons = () => ({
+  brokenImage: MuiBrokenImageIcon as IconComponent,
   // To be confirmed: see https://github.com/backstage/backstage/issues/4970
-  catalog: MuiMenuBookIcon,
-  chat: MuiChatIcon,
-  dashboard: MuiDashboardIcon,
-  docs: MuiDocsIcon,
-  email: MuiEmailIcon,
-  github: MuiGitHubIcon,
-  group: MuiPeopleIcon,
-  help: MuiHelpIcon,
-  'kind:api': MuiExtensionIcon,
-  'kind:component': MuiMemoryIcon,
-  'kind:domain': MuiApartmentIcon,
-  'kind:group': MuiPeopleIcon,
-  'kind:location': MuiLocationOnIcon,
-  'kind:system': MuiCategoryIcon,
-  'kind:user': MuiPersonIcon,
-  user: MuiPersonIcon,
-  warning: MuiWarningIcon,
-};
+  catalog: MuiMenuBookIcon as IconComponent,
+  chat: MuiChatIcon as IconComponent,
+  dashboard: MuiDashboardIcon as IconComponent,
+  docs: MuiDocsIcon as IconComponent,
+  email: MuiEmailIcon as IconComponent,
+  github: MuiGitHubIcon as IconComponent,
+  group: MuiPeopleIcon as IconComponent,
+  help: MuiHelpIcon as IconComponent,
+  'kind:api': MuiExtensionIcon as IconComponent,
+  'kind:component': MuiMemoryIcon as IconComponent,
+  'kind:domain': MuiApartmentIcon as IconComponent,
+  'kind:group': MuiPeopleIcon as IconComponent,
+  'kind:location': MuiLocationOnIcon as IconComponent,
+  'kind:system': MuiCategoryIcon as IconComponent,
+  'kind:user': MuiPersonIcon as IconComponent,
+  user: MuiPersonIcon as IconComponent,
+  warning: MuiWarningIcon as IconComponent,
+});
