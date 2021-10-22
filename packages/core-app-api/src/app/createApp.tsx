@@ -89,7 +89,7 @@ export const defaultConfigLoader: AppConfigLoader = async (
 /**
  * Creates a new Backstage App.
  */
-export function createApp(options?: AppOptions) {
+export function createApp(options: AppOptions) {
   const missingRequiredComponents = REQUIRED_APP_COMPONENTS.filter(
     name => !options?.components?.[name],
   );

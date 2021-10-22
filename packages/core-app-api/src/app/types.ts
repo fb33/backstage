@@ -155,6 +155,9 @@ export type AppOptions = {
    */
   apis?: Iterable<AnyApiFactory>;
 
+  derp: string;
+  merp: string;
+
   /**
    * Supply icons to override the default ones.
    */

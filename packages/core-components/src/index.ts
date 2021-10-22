@@ -28,3 +28,4 @@ export * from './overridableComponents';
 export { defaultAppComponents } from './defaultAppComponents';
 export { defaultAppIcons } from './defaultAppIcons';
 export { defaultAppThemes } from './defaultAppThemes';
+export { withDefaults } from './withDefaults';
