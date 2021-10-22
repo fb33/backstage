@@ -1,0 +1,25 @@
+name: Create and Update Github Issues from Snyk report
+
+on:
+  [push, pull_request]
+  # workflow_dispatch:
+  # pull_request:
+  # schedule:
+  #   - cron: '0 */4 * * *' # every 4 hours
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: test --json  --yarn-workspaces --strict-out-of-sync=false > snyk.json
+
+      - name: Check that the snyk.json file exists.
+        run: ls -la
