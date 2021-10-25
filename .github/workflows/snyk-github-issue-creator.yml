@@ -19,7 +19,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: test --json  --yarn-workspaces --strict-out-of-sync=false > snyk.json
+          args: --yarn-workspaces --strict-out-of-sync=false
+          json: true
 
       - name: Check that the snyk.json file exists.
-        run: ls -la
+        run: ls -la | grep snyk.json
