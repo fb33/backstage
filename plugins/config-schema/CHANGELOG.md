@@ -1,5 +1,15 @@
 # @backstage/plugin-config-schema
 
+## 0.1.12
+
+### Patch Changes
+
+- 10615525f3: Switch to use the json and observable types from `@backstage/types`
+- Updated dependencies
+  - @backstage/errors@0.1.4
+  - @backstage/config@0.1.11
+  - @backstage/core-plugin-api@0.1.12
+
 ## 0.1.11
 
 ### Patch Changes

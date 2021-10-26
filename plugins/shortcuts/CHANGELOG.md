@@ -1,5 +1,13 @@
 # @backstage/plugin-shortcuts
 
+## 0.1.13
+
+### Patch Changes
+
+- 10615525f3: Switch to use the json and observable types from `@backstage/types`
+- Updated dependencies
+  - @backstage/core-plugin-api@0.1.12
+
 ## 0.1.12
 
 ### Patch Changes
